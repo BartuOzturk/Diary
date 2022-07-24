@@ -8,10 +8,15 @@ import java.time.Month;
 import java.util.List;
 
 @Service
-public class EntryService {
+public class EntryService{
+    private final EntryRepository entryRepository;
+
+    public EntryService(EntryRepository entryRepository) {
+        this.entryRepository = entryRepository;
+    }
+
     public List<Entry> getInfoOfEntry () {
-        return List.of(new Entry(1L, "Test Title", "This is the Content of the first Entry of my diary", LocalDate.of(2002, Month.JULY, 22), 10
-        ));
+        return entryRepository.findAll();
 
     }
 }
