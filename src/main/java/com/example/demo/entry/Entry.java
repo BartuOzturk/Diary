@@ -1,8 +1,21 @@
 package com.example.demo.entry;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+
+@Entity
+@Table
 public class Entry {
+    @Id
+    @SequenceGenerator(name = "entry_sequence",
+                       sequenceName = "entry_sequence",
+                        allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "entry_sequence"
+    )
     private Long id;
     private String title;
     private String content;
