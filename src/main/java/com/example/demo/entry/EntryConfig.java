@@ -14,9 +14,9 @@ public class EntryConfig {
     @Bean
     CommandLineRunner commandLineRunner(EntryRepository repository){
         return args -> {
-            Entry One = new Entry( "Test Title", "This is the Content of the first Entry of my diary", LocalDate.of(2002, Month.JULY, 22), 10
+            Entry One = new Entry( "Test Title", "This is the Content of the first Entry of my diary", LocalDate.of(2002, Month.JULY, 26)
             );
-            Entry Two = new Entry( "Test Title", "This is the Content of the second Entry of my diary", LocalDate.of(2002, Month.JULY, 24), 10
+            Entry Two = new Entry( "Test Title", "This is the Content of the second Entry of my diary", LocalDate.of(2002, Month.JULY, 28)
             );
 
             repository.saveAll(
