@@ -1,10 +1,8 @@
 package com.example.demo.entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -25,7 +23,19 @@ public class EntryController {
         return entryService.getInfoOfEntry();
     }
     @PostMapping
-    public void registerNewEntry(Entry entry){
+    public void registerNewEntry(@RequestBody Entry entry){
         entryService.addNewEntry(entry);
+    }
+    @PutMapping(path ="{entryId}")
+    public void updateEntry(@PathVariable ("entryId") Long entryId,
+                            @RequestParam(required = false) String title,
+                            @RequestParam(required = false)String content) {
+                            entryService.updateEntry(entryId,title,content);
+
+    }
+
+    @DeleteMapping(path = "{entryId}")
+    public void deleteEntry(@PathVariable("entryId")Long entryId){
+        entryService.deleteEntry(entryId);
     }
 }
